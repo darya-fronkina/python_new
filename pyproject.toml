@@ -26,6 +26,7 @@ lint = [
 [tool.black]
 line-length = 119
 target-version = ['py311']
+exclude = ['.git']
 
 [tool.isort]
 profile = "black"
