@@ -41,6 +41,40 @@ def mask_account_card(data_string: str) -> str:
 
     return f"{data_type} {masked_number}"
 
+def get_date(date_string: str) -> str:
+    """
+    Преобразует дату из формата "2024-03-11T02:26:18.671407" в формат "ДД.ММ.ГГГГ"
 
+    Args:
+        date_string (str): Дата в формате "2024-03-11T02:26:18.671407"
+
+    Returns:
+        str: Дата в формате "ДД.ММ.ГГГГ"
+
+    Raises:
+        ValueError: Если входная строка имеет неверный формат
+    """
+    # Разделяем строку по 'T' чтобы отделить дату от времени
+    parts = date_string.split('T')
+
+    if len(parts) < 1:
+        raise ValueError(f"Неверный формат даты: {date_string}")
+
+    date_part = parts[0]
+
+    # Разделяем дату на год, месяц и день
+    date_components = date_part.split('-')
+
+    if len(date_components) != 3:
+        raise ValueError(f"Неверный формат даты: {date_string}")
+
+    year, month, day = date_components
+
+    # Проверяем, что все компоненты являются числами
+    if not (year.isdigit() and month.isdigit() and day.isdigit()):
+        raise ValueError(f"Неверный формат даты: {date_string}")
+
+    # Форматируем в нужный вид
+    return f"{day}.{month}.{year}"
 
 
