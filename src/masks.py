@@ -18,11 +18,11 @@ def get_mask_card_number(card_number: int) -> str:
     # Разбиваем номер на части и формируем маску
     part1 = card_str[:4]  # первые 4 цифры
     part2 = card_str[4:6]  # следующие 2 цифры
-    part3 = ""  # маскируем следующие 4 цифры
+    part3 = "****"  # маскируем следующие 4 цифры
     part4 = "****"  # маскируем следующие 4 цифры
     part5 = card_str[12:]  # последние 4 цифры
 
-    return f"{part1} {part2} {part3} {part4} {part5}"
+    return f"{part1} {part2}{part3} {part4} {part5}"
 
 
 def get_mask_account(account_number: int) -> str:
